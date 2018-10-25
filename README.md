@@ -41,3 +41,31 @@ The AP distribute IP address two connected devices, 192.168.1.x and 192.168.1.x1
 
 # Usage
 
+**python iperf_auto.py [options]**<br>
+<br>
+usage: iperf_auto.py [-h] [-ipd IPD_ADDRESS] [-ipp IPP_ADDRESS] [-t TCP_UDP]<br>
+                       [-d DURATION] [-x DIRECTION] [-b BAND] [-lc LOCAL_TYPE]
+                       [-s SLEEP_TIME]<br>
+<br>
+**optional arguments:**<br>
+  -h, --help            show this help message and exit<br>
+  -ipd IPD_ADDRESS, --ipd_address IPD_ADDRESS dut ip address<br>
+  -ipp IPP_ADDRESS, --ipp_address IPP_ADDRES peer device ip address<br>
+  -t TCP_UDP, --tcp_udp TCP_UDP tcp or udp<br>
+  -d DURATION, --duration DURATION duration<br>
+  -x DIRECTION, --direction DIRECTION directon 'tx' or 'rx'<br>                   
+  -b BAND, --band BAND  band a(5GHz) or b(2.4GHz)<br>
+  -lc LOCAL_TYPE, --lc_type LOCAL_TYPE local dut device is 'LOCAL'(PC) or 'PHONE'<br>               
+  -s SLEEP_TIME, --sleep SLEEP_TIME (sec)
+                        Sleep duration between wl commands, need to adjust for your logging. <br>
+<br>
+ Typical usage for this is to collect wl counters values every 1 second while running iperf. Also, you can record iperf througputs. 
+<br>
+For examples, with configuration described above, you can assign -ipd to '192.168.1.7', -ipp '192.168.1.4'. The options -x indicate direction dut perspective so if you want to measure tcp rx throughput on the phone dut, you can set lie this
+-t tcp -x rx -lc PHONE. In this case, iperf will be running as a server on the rempote PC and iperf client will be running as a client on the phone(DUT).
+-b, band informaton is needed to set sleep time as it varys depend on 2.4GHz or 5GHz a little bit.
+<br>
+**iperf_auto.py -ipd 192.168.1.7 -ipp 192.168.1.4 -b a -t tcp -x rx -lc PHONE -d 60 -s 0.8**
+
+
+
