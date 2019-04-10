@@ -61,10 +61,16 @@ usage: iperf_auto.py [-h] [-ipd IPD_ADDRESS] [-ipp IPP_ADDRESS] [-t TCP_UDP]<br>
 <br>
  Typical usage for this is to collect wl counters values every 1 second while running iperf. Also, you can record iperf througputs. 
 <br>
-For examples, with configuration described above, you can assign -ipd to '192.168.1.7', -ipp '192.168.1.4'. The options -x indicate direction dut perspective so if you want to measure tcp rx throughput on the phone dut, you can set lie this
--t tcp -x rx -lc PHONE. In this case, iperf will be running as a server on the rempote PC and iperf client will be running as a client on the phone(DUT).
--b, band informaton is needed to set sleep time as it varys depend on 2.4GHz or 5GHz a little bit.
+
+For examples, with configuration described above,<br>
+you can assign -ipd to '192.168.1.7', -ipp '192.168.1.4'. <br>
+The options -x indicate direction dut perspective so if you want to measure tcp rx throughput on the phone dut,,<br/>
+you can set like this -t tcp -x rx -lc PHONE. <br>
+In this case, iperf will be running as a server on the rempote PC and iperf client will be running as a client on the phone(DUT).<br>
+-b, band informaton is needed <br>
+-s, to set sleep time as it varys depend on 2.4GHz or 5GHz a little bit.
 <br>
+
 **iperf_auto.py -ipd 192.168.1.7 -ipp 192.168.1.4 -b a -t tcp -x rx -lc PHONE -d 60 -s 0.8**
 
 
